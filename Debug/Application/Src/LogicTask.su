@@ -1,0 +1,1 @@
+../Application/Src/LogicTask.cpp:6:17:void LogicTask_Run(osMessageQueueId_t)	64	static

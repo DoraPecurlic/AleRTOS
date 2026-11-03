@@ -4,18 +4,24 @@
 #include "AlarmState.hpp"
 #include "cmsis_os2.h"
 
+#include <cstdint>
 
-
-extern "C" void OutputTask_Run(void)
+extern "C" void OutputTask_Run(osMessageQueueId_t stateQueue)
 {
 	LedIndicator led(LED_GPIO_Port, LED_Pin);
 
-	AlarmState state = AlarmState::Active;
+	AlarmState currentState = AlarmState::Inactive;
 
+	led.turnOff();
+
+	uint32_t receivedState = 0;
 
 	while(true)
 	{
-		switch(state)
+		while(osMessageQueueGet(stateQueue, &receivedState, nullptr,0) == osOK){
+			currentState = static_cast<AlarmState>(receivedState);
+		}
+		switch(currentState)
 		{
 			case AlarmState::Inactive:
 				led.turnOff();

@@ -8,11 +8,13 @@
 #ifndef INC_OUTPUTTASK_H_
 #define INC_OUTPUTTASK_H_
 
+#include "cmsis_os2.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-void OutputTask_Run(void);
+void OutputTask_Run(osMessageQueueId_t stateQueue);
 
 
 

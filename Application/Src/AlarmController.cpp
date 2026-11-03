@@ -2,7 +2,6 @@
 #include "AlarmEvent.hpp"
 #include "AlarmState.hpp"
 
-AlarmController alarm;
 
 bool AlarmController::handleEvent(AlarmEvent event){
 	switch(event)

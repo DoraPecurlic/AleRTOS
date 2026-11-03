@@ -23,6 +23,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "OutputTask.h"
+#include "LogicTask.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -52,6 +53,18 @@ const osThreadAttr_t defaultTask_attributes = {
   .stack_size = 128 * 4,
   .priority = (osPriority_t) osPriorityNormal,
 };
+/* Definitions for logicTask */
+osThreadId_t logicTaskHandle;
+const osThreadAttr_t logicTask_attributes = {
+  .name = "logicTask",
+  .stack_size = 256 * 4,
+  .priority = (osPriority_t) osPriorityNormal,
+};
+/* Definitions for alarmStateQueue */
+osMessageQueueId_t alarmStateQueueHandle;
+const osMessageQueueAttr_t alarmStateQueue_attributes = {
+  .name = "alarmStateQueue"
+};
 /* USER CODE BEGIN PV */
 
 /* USER CODE END PV */
@@ -62,6 +75,7 @@ static void MX_GPIO_Init(void);
 static void MX_I2C1_Init(void);
 static void MX_USART2_UART_Init(void);
 void StartDefaultTask(void *argument);
+void StartTask02(void *argument);
 
 /* USER CODE BEGIN PFP */
 
@@ -122,6 +136,10 @@ int main(void)
   /* start timers, add new ones, ... */
   /* USER CODE END RTOS_TIMERS */
 
+  /* Create the queue(s) */
+  /* creation of alarmStateQueue */
+  alarmStateQueueHandle = osMessageQueueNew (4, sizeof(uint32_t), &alarmStateQueue_attributes);
+
   /* USER CODE BEGIN RTOS_QUEUES */
   /* add queues, ... */
   /* USER CODE END RTOS_QUEUES */
@@ -129,6 +147,9 @@ int main(void)
   /* Create the thread(s) */
   /* creation of defaultTask */
   defaultTaskHandle = osThreadNew(StartDefaultTask, NULL, &defaultTask_attributes);
+
+  /* creation of logicTask */
+  logicTaskHandle = osThreadNew(StartTask02, NULL, &logicTask_attributes);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -315,8 +336,23 @@ void StartDefaultTask(void *argument)
 {
   /* USER CODE BEGIN 5 */
   /* Infinite loop */
-	OutputTask_Run();
+	OutputTask_Run(alarmStateQueueHandle);
   /* USER CODE END 5 */
+}
+
+/* USER CODE BEGIN Header_StartTask02 */
+/**
+* @brief Function implementing the logicTask thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_StartTask02 */
+void StartTask02(void *argument)
+{
+  /* USER CODE BEGIN StartTask02 */
+  /* Infinite loop */
+	LogicTask_Run(alarmStateQueueHandle);
+  /* USER CODE END StartTask02 */
 }
 
 /**
