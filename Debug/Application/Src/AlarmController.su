@@ -1,0 +1,2 @@
+../Application/Src/AlarmController.cpp:7:6:bool AlarmController::handleEvent(AlarmEvent)	16	static
+../Application/Src/AlarmController.cpp:41:12:AlarmState AlarmController::getState() const	16	static

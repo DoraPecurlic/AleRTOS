@@ -1,3 +1,4 @@
+"./Application/Src/AlarmController.o"
 "./Application/Src/LedIndicator.o"
 "./Application/Src/OutputTask.o"
 "./Core/Src/freertos.o"
