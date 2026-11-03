@@ -7,16 +7,19 @@
 CPP_SRCS += \
 ../Application/Src/AlarmController.cpp \
 ../Application/Src/LedIndicator.cpp \
+../Application/Src/LogicTask.cpp \
 ../Application/Src/OutputTask.cpp 
 
 OBJS += \
 ./Application/Src/AlarmController.o \
 ./Application/Src/LedIndicator.o \
+./Application/Src/LogicTask.o \
 ./Application/Src/OutputTask.o 
 
 CPP_DEPS += \
 ./Application/Src/AlarmController.d \
 ./Application/Src/LedIndicator.d \
+./Application/Src/LogicTask.d \
 ./Application/Src/OutputTask.d 
 
 
@@ -27,7 +30,7 @@ Application/Src/%.o Application/Src/%.su Application/Src/%.cyclo: ../Application
 clean: clean-Application-2f-Src
 
 clean-Application-2f-Src:
-	-$(RM) ./Application/Src/AlarmController.cyclo ./Application/Src/AlarmController.d ./Application/Src/AlarmController.o ./Application/Src/AlarmController.su ./Application/Src/LedIndicator.cyclo ./Application/Src/LedIndicator.d ./Application/Src/LedIndicator.o ./Application/Src/LedIndicator.su ./Application/Src/OutputTask.cyclo ./Application/Src/OutputTask.d ./Application/Src/OutputTask.o ./Application/Src/OutputTask.su
+	-$(RM) ./Application/Src/AlarmController.cyclo ./Application/Src/AlarmController.d ./Application/Src/AlarmController.o ./Application/Src/AlarmController.su ./Application/Src/LedIndicator.cyclo ./Application/Src/LedIndicator.d ./Application/Src/LedIndicator.o ./Application/Src/LedIndicator.su ./Application/Src/LogicTask.cyclo ./Application/Src/LogicTask.d ./Application/Src/LogicTask.o ./Application/Src/LogicTask.su ./Application/Src/OutputTask.cyclo ./Application/Src/OutputTask.d ./Application/Src/OutputTask.o ./Application/Src/OutputTask.su
 
 .PHONY: clean-Application-2f-Src
 

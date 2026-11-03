@@ -1,5 +1,6 @@
 Application/Src/OutputTask.o: ../Application/Src/OutputTask.cpp \
  ../Core/Inc/OutputTask.h \
+ ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h \
  D:/STM32_Projects/AleRTOS/Application/Inc/LedIndicator.hpp \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
  ../Core/Inc/stm32f4xx_hal_conf.h \
@@ -32,9 +33,9 @@ Application/Src/OutputTask.o: ../Application/Src/OutputTask.cpp \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
  ../Core/Inc/main.h \
- D:/STM32_Projects/AleRTOS/Application/Inc/AlarmState.hpp \
- ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h
+ D:/STM32_Projects/AleRTOS/Application/Inc/AlarmState.hpp
 ../Core/Inc/OutputTask.h:
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h:
 D:/STM32_Projects/AleRTOS/Application/Inc/LedIndicator.hpp:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 ../Core/Inc/stm32f4xx_hal_conf.h:
@@ -68,4 +69,3 @@ D:/STM32_Projects/AleRTOS/Application/Inc/LedIndicator.hpp:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:
 ../Core/Inc/main.h:
 D:/STM32_Projects/AleRTOS/Application/Inc/AlarmState.hpp:
-../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h:

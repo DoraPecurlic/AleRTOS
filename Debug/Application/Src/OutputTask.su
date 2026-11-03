@@ -1,1 +1,1 @@
-../Application/Src/OutputTask.cpp:9:17:void OutputTask_Run()	24	static
+../Application/Src/OutputTask.cpp:9:17:void OutputTask_Run(osMessageQueueId_t)	32	static
