@@ -4,11 +4,14 @@
 #include "AlarmState.hpp"
 #include "cmsis_os2.h"
 
+
+
 extern "C" void OutputTask_Run(void)
 {
 	LedIndicator led(LED_GPIO_Port, LED_Pin);
 
 	AlarmState state = AlarmState::Active;
+
 
 	while(true)
 	{
