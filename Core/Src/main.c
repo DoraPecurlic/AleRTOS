@@ -24,6 +24,7 @@
 /* USER CODE BEGIN Includes */
 #include "OutputTask.h"
 #include "LogicTask.h"
+#include "InputTask.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -60,10 +61,22 @@ const osThreadAttr_t logicTask_attributes = {
   .stack_size = 256 * 4,
   .priority = (osPriority_t) osPriorityNormal,
 };
+/* Definitions for InputTask */
+osThreadId_t InputTaskHandle;
+const osThreadAttr_t InputTask_attributes = {
+  .name = "InputTask",
+  .stack_size = 256 * 4,
+  .priority = (osPriority_t) osPriorityNormal,
+};
 /* Definitions for alarmStateQueue */
 osMessageQueueId_t alarmStateQueueHandle;
 const osMessageQueueAttr_t alarmStateQueue_attributes = {
   .name = "alarmStateQueue"
+};
+/* Definitions for alarmEventQueue */
+osMessageQueueId_t alarmEventQueueHandle;
+const osMessageQueueAttr_t alarmEventQueue_attributes = {
+  .name = "alarmEventQueue"
 };
 /* USER CODE BEGIN PV */
 
@@ -76,6 +89,7 @@ static void MX_I2C1_Init(void);
 static void MX_USART2_UART_Init(void);
 void StartDefaultTask(void *argument);
 void StartTask02(void *argument);
+void StartTask03(void *argument);
 
 /* USER CODE BEGIN PFP */
 
@@ -140,6 +154,9 @@ int main(void)
   /* creation of alarmStateQueue */
   alarmStateQueueHandle = osMessageQueueNew (4, sizeof(uint32_t), &alarmStateQueue_attributes);
 
+  /* creation of alarmEventQueue */
+  alarmEventQueueHandle = osMessageQueueNew (8, sizeof(uint32_t), &alarmEventQueue_attributes);
+
   /* USER CODE BEGIN RTOS_QUEUES */
   /* add queues, ... */
   /* USER CODE END RTOS_QUEUES */
@@ -150,6 +167,9 @@ int main(void)
 
   /* creation of logicTask */
   logicTaskHandle = osThreadNew(StartTask02, NULL, &logicTask_attributes);
+
+  /* creation of InputTask */
+  InputTaskHandle = osThreadNew(StartTask03, NULL, &InputTask_attributes);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -351,8 +371,23 @@ void StartTask02(void *argument)
 {
   /* USER CODE BEGIN StartTask02 */
   /* Infinite loop */
-	LogicTask_Run(alarmStateQueueHandle);
+	LogicTask_Run(alarmEventQueueHandle,alarmStateQueueHandle);
   /* USER CODE END StartTask02 */
+}
+
+/* USER CODE BEGIN Header_StartTask03 */
+/**
+* @brief Function implementing the InputTask thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_StartTask03 */
+void StartTask03(void *argument)
+{
+  /* USER CODE BEGIN StartTask03 */
+  /* Infinite loop */
+	InputTask_Run(alarmEventQueueHandle);
+  /* USER CODE END StartTask03 */
 }
 
 /**

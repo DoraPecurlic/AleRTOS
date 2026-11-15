@@ -6,21 +6,27 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
 ../Application/Src/AlarmController.cpp \
+../Application/Src/InputTask.cpp \
 ../Application/Src/LedIndicator.cpp \
 ../Application/Src/LogicTask.cpp \
-../Application/Src/OutputTask.cpp 
+../Application/Src/OutputTask.cpp \
+../Application/Src/UserButton.cpp 
 
 OBJS += \
 ./Application/Src/AlarmController.o \
+./Application/Src/InputTask.o \
 ./Application/Src/LedIndicator.o \
 ./Application/Src/LogicTask.o \
-./Application/Src/OutputTask.o 
+./Application/Src/OutputTask.o \
+./Application/Src/UserButton.o 
 
 CPP_DEPS += \
 ./Application/Src/AlarmController.d \
+./Application/Src/InputTask.d \
 ./Application/Src/LedIndicator.d \
 ./Application/Src/LogicTask.d \
-./Application/Src/OutputTask.d 
+./Application/Src/OutputTask.d \
+./Application/Src/UserButton.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
@@ -30,7 +36,7 @@ Application/Src/%.o Application/Src/%.su Application/Src/%.cyclo: ../Application
 clean: clean-Application-2f-Src
 
 clean-Application-2f-Src:
-	-$(RM) ./Application/Src/AlarmController.cyclo ./Application/Src/AlarmController.d ./Application/Src/AlarmController.o ./Application/Src/AlarmController.su ./Application/Src/LedIndicator.cyclo ./Application/Src/LedIndicator.d ./Application/Src/LedIndicator.o ./Application/Src/LedIndicator.su ./Application/Src/LogicTask.cyclo ./Application/Src/LogicTask.d ./Application/Src/LogicTask.o ./Application/Src/LogicTask.su ./Application/Src/OutputTask.cyclo ./Application/Src/OutputTask.d ./Application/Src/OutputTask.o ./Application/Src/OutputTask.su
+	-$(RM) ./Application/Src/AlarmController.cyclo ./Application/Src/AlarmController.d ./Application/Src/AlarmController.o ./Application/Src/AlarmController.su ./Application/Src/InputTask.cyclo ./Application/Src/InputTask.d ./Application/Src/InputTask.o ./Application/Src/InputTask.su ./Application/Src/LedIndicator.cyclo ./Application/Src/LedIndicator.d ./Application/Src/LedIndicator.o ./Application/Src/LedIndicator.su ./Application/Src/LogicTask.cyclo ./Application/Src/LogicTask.d ./Application/Src/LogicTask.o ./Application/Src/LogicTask.su ./Application/Src/OutputTask.cyclo ./Application/Src/OutputTask.d ./Application/Src/OutputTask.o ./Application/Src/OutputTask.su ./Application/Src/UserButton.cyclo ./Application/Src/UserButton.d ./Application/Src/UserButton.o ./Application/Src/UserButton.su
 
 .PHONY: clean-Application-2f-Src
 

@@ -15,7 +15,7 @@
 extern "C" {
 #endif
 
-void LogicTask_Run(osMessageQueueId_t stateQueue);
+void LogicTask_Run(osMessageQueueId_t eventQueue, osMessageQueueId_t stateQueue);
 
 
 #ifdef __cplusplus
